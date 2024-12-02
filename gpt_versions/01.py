@@ -27,7 +27,7 @@ l2 = []
 
 
 # Load data lists
-with open("data/01_01_24") as data:
+with open("data/01") as data:
     
     for line in data:
         a, b = line.strip().split("   ")
