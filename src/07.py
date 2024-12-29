@@ -23,7 +23,12 @@ def solve(operands, operators):
         a = queue.pop()
         b = operands[i]
 
-        queue.append(eval(f'{a}{operators[i-1]}{b}'))
+        if operators[i-1] == '+':
+            queue.append(a + b)
+        elif operators[i-1] == '*':
+            queue.append(a * b)
+        elif operators[i-1] == '||':
+            queue.append(int(str(a) + str(b)))
 
     return queue[0]
 
@@ -35,7 +40,7 @@ for equation in equations:
     res = equation['result']
     oper = equation['operands']
 
-    operand_combinations = list(itertools.product(['+', '*'], repeat=(len(oper) - 1)))
+    operand_combinations = list(itertools.product(['+', '*', '||'], repeat=(len(oper) - 1)))
     
     for combination in operand_combinations:
 
